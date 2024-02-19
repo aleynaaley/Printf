@@ -1,3 +1,71 @@
+#  Variadic Fonksiyonlar
+
+Variadic fonksiyonlar (değişken fonksiyonlar) , değişken sayıda argüman alabilen işlevlerdir . C programlamada değişken bir işlev programa esneklik katar. Bir sabit argüman alır ve daha sonra herhangi bir sayıda argüman iletilebilir. Variadik fonksiyon en az bir sabit değişkenden ve ardından son parametre olarak bir üç noktadan (…) oluşur. bu tür fonksiyonları tanımlamak için `<stdarg.h>` başlık dosyasındaki `va_list`, `va_start`, `va_arg`, ve `va_end` gibi makroları kullanırız. 
+```bash
+int işlev_adı(veri_tipi değişken_adı, ...);
+```
+
+-`va_list`: stdarg.h başlık dosyasında tanımlanmış olan bir yapı (structure) veya türün adıdır. Bu yapı, bir veya daha fazla değişken sayıda argümanı taşımak için kullanılır. va_list'in iç yapısı genellikle derleyici ve sistem tarafından gizli tutulur, ve bu yapıya doğrudan erişim sağlamak mümkün değildir.
+
+
+- `va_start(va_list ap, argN)` : Bu, değişken fonksiyon argümanlarına erişim sağlar.Burada *va_list* değişken işlevdeki son sabit argümanın işaretçisi olacaktır.*argN* değişken fonksiyondaki son sabit argümandır.Yani *va_start* makrosu *va_list* yapısını başlatır ve bu yapı üzerinden değişken sayıda argümanlara erişim sağlanabilir hale gelir. 
+- `type va_arg(va_list ap, type)` : *va_list* *va_start* ile başlatılan variadic argüman listesini temsil eden bir yapıdır *type* Erişilmek istenen argümanın türüdür.
+- `va_end(va_list ap)`:
+- `va_copy(va_list hedefi, va_list kaynağı)`:
+
+Makro, genellikle bir belirteç veya sembolik ad ile ilişkilendirilmiş, bir ya da daha fazla ifadeyi içeren bir programlama yapısıdır. Makrolar, programcılara tekrar eden kod bloklarını kısaltmak, kodu daha okunabilir hale getirmek ve programcılara belirli bir görevi gerçekleştirmek için kullanılan özel bir dil sunmak amacıyla kullanılır.
+
+C programlama dilinde makrolar, #define ön işlemci direktifi ile tanımlanır. Ön işlemci, kodu derleme öncesinde belirli değişikliklere tabi tutan bir programın parçasıdır. Bir makro, belirli bir sembolün bir ifade ile değiştirilmesini sağlar.
+
+
+
+
+#  putnbr()
+ ```bash
+
+#include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	nbr;
+
+	nbr = n;
+	if (nbr < 0)
+	{
+		write(fd, "-", 1);
+		nbr *= -1;
+	}
+	if (nbr > 9)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putchar_fd((nbr % 10) + '0', fd);
+	}
+	else
+		ft_putchar_fd(nbr + '0', fd);
+}
+
+ ```
+#  putstr()
+
+
+ ```bash
+
+#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	while (*s != '\0')
+	{
+		write(fd, &(*s), 1);
+		s++;
+	}
+}
+
+ ```
+
+
 # Printf
 int
      printf(const char * restrict format, ...);DESCRIPTION
