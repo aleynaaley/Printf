@@ -33,7 +33,10 @@ int sum_variadic(int count, ...)
     return sum;
 }
  ```
-
+ ```bash
+int result = sum_variadic(3, 1, 2, 3);
+printf("The sum is: %d", result);
+ ```
 
 #  putnbr()
  ```bash
