@@ -5,7 +5,7 @@ Variadic fonksiyonlar (değişken fonksiyonlar) , değişken sayıda argüman al
 int işlev_adı(veri_tipi değişken_adı, ...);
 ```
 
--`va_list`: stdarg.h başlık dosyasında tanımlanmış olan bir yapı (structure) veya türün adıdır. Bu yapı, bir veya daha fazla değişken sayıda argümanı taşımak için kullanılır. va_list'in iç yapısı genellikle derleyici ve sistem tarafından gizli tutulur, ve bu yapıya doğrudan erişim sağlamak mümkün değildir.
+- `va_list`: stdarg.h başlık dosyasında tanımlanmış olan bir yapı (structure) veya türün adıdır. Bu yapı, bir veya daha fazla değişken sayıda argümanı taşımak için kullanılır. va_list'in iç yapısı genellikle derleyici ve sistem tarafından gizli tutulur, ve bu yapıya doğrudan erişim sağlamak mümkün değildir.
 
 
 - `va_start(va_list ap, argN)` : Bu, değişken fonksiyon argümanlarına erişim sağlar.Burada *va_list* değişken işlevdeki son sabit argümanın işaretçisi olacaktır.*argN* değişken fonksiyondaki son sabit argümandır.Yani *va_start* makrosu *va_list* yapısını başlatır ve bu yapı üzerinden değişken sayıda argümanlara erişim sağlanabilir hale gelir. 
