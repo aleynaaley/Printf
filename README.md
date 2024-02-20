@@ -17,7 +17,22 @@ Makro, genellikle bir belirteç veya sembolik ad ile ilişkilendirilmiş, bir ya
 
 C programlama dilinde makrolar, #define ön işlemci direktifi ile tanımlanır. Ön işlemci, kodu derleme öncesinde belirli değişikliklere tabi tutan bir programın parçasıdır. Bir makro, belirli bir sembolün bir ifade ile değiştirilmesini sağlar.
 
+- örnek
+ ```bash
+int sum_variadic(int count, ...)
+{
+    va_list args;
 
+    va_start(args, count);
+    int sum = 0;
+    for (int i = 0; i < count; i++)
+    {
+        sum += va_arg(args, int);
+    }
+    va_end(args);
+    return sum;
+}
+ ```
 
 
 #  putnbr()
