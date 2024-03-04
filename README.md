@@ -1,23 +1,37 @@
 #  Variadic Fonksiyonlar
 
 Variadic fonksiyonlar (değişken fonksiyonlar) , değişken sayıda argüman alabilen işlevlerdir . C programlamada değişken bir işlev programa esneklik katar. Bir sabit argüman alır ve daha sonra herhangi bir sayıda argüman iletilebilir. Variadik fonksiyon en az bir sabit değişkenden ve ardından son parametre olarak bir üç noktadan (…) oluşur. bu tür fonksiyonları tanımlamak için `<stdarg.h>` başlık dosyasındaki `va_list`, `va_start`, `va_arg`, ve `va_end` gibi makroları kullanırız. 
+
 ```bash
 int işlev_adı(veri_tipi değişken_adı, ...);
 ```
 
-- `va_list`: stdarg.h başlık dosyasında tanımlanmış olan bir yapı (structure) veya türün adıdır. Bu yapı, bir veya daha fazla değişken sayıda argümanı taşımak için kullanılır. va_list'in iç yapısı genellikle derleyici ve sistem tarafından gizli tutulur, ve bu yapıya doğrudan erişim sağlamak mümkün değildir.
+Makro, C ve diğer birçok programlama dilinde, belirli birer metin bloğunu tanımlayan ve bir isimle çağrıldığında bu metin bloğunu yerine koyan bir programlama yapı elemanıdır. C dilinde makrolar, #define ön işlemci direktifi kullanılarak tanımlanır.
+```
+// Basit bir makro tanımı
+#define KARE(x) ((x) * (x))
 
+int main() {
+    int sayi = 5;
+    int kareSonucu = KARE(sayi);
+```
 
-- `va_start(va_list ap, argN)` : Bu, değişken fonksiyon argümanlarına erişim sağlar.Burada *va_list* değişken işlevdeki son sabit argümanın işaretçisi olacaktır.*argN* değişken fonksiyondaki son sabit argümandır.Yani *va_start* makrosu *va_list* yapısını başlatır ve bu yapı üzerinden değişken sayıda argümanlara erişim sağlanabilir hale gelir. 
-- `type va_arg(va_list ap, type)` : *va_list* *va_start* ile başlatılan variadic argüman listesini temsil eden bir yapıdır *type* Erişilmek istenen argümanın türüdür.
-- `va_end(va_list ap)`:
-- `va_copy(va_list hedefi, va_list kaynağı)`:
+- `va_list`: Bu yapı değişken sayıda argümanlara erişim sağlamak için kullanılan bir türdür. Bu tür, argümanların listesini temsil eder. va_list'in iç yapısı genellikle derleyici ve sistem tarafından gizli tutulur, ve bu yapıya doğrudan erişim sağlamak mümkün değildir.Tür genellikle fonksiyon içerisinde kullanılır.
+  
+- `va_start(va_list args, argN)` : Bu, değişken fonksiyon argümanlarına erişim sağlar.Burada *va_list* değişken işlevdeki son sabit argümanın işaretçisi olacaktır.*argN* değişken fonksiyondaki son sabit argümandır.Yani *va_start* makrosu *va_list* yapısını başlatır ve bu yapı üzerinden değişke  n sayıda argümanlara erişim sağlanabilir hale gelir(fonksiyonun argümanlarını işlemek için hazırlık yapar).*va_start* makrosu kullanılmadan önce *va_list* türü başlatılamaz.
+  
+- `va_arg(va_list args, type)` : *va_list* *va_start* ile başlatılan variadic argüman listesini temsil eden bir yapıdır *type* Erişilmek istenen argümanın türüdür.*va_list* ile argümanlara erişim için kullanılıyor.
+  
+- `va_end(va_list args)`:Değişken sayıda argüman alan fonksiyonların sonunda va_list'i temizlemek için kullanılır. Bu makro, va_start ile başlatılan va_list'i sıfırlar ve gerektiğinde bellek kaynaklarını serbest bırakır.Bu, özellikle bellek sızıntılarını önlemek ve değişken sayıda argüman alan fonksiyonlarını güvenli bir şekilde kullanmak için önemlidir.
+  
+- `va_copy(va_list hedefi, va_list kaynağı)`:Bu makro, bir va_list'i başka bir va_list ile aynı duruma getirir, böylece aynı argüman listesine erişim sağlar.Bu, özellikle bir va_list'in değerini başka bir va_list'e kopyalamak istediğiniz durumlarda kullanışlıdır.
 
-Makro, genellikle bir belirteç veya sembolik ad ile ilişkilendirilmiş, bir ya da daha fazla ifadeyi içeren bir programlama yapısıdır. Makrolar, programcılara tekrar eden kod bloklarını kısaltmak, kodu daha okunabilir hale getirmek ve programcılara belirli bir görevi gerçekleştirmek için kullanılan özel bir dil sunmak amacıyla kullanılır.
+nt:
+*va_list* türü, derleyicinin ve platformun implementasyonuna bağlı olarak, argümanların saklandığı bir türdür. Derleyici ve platform, değişken sayıda argümanları geçiş şeklini (calling convention) ve bellek düzenini belirleyerek va_list'i kullanır. *va_start*,*va_arg*, ve *va_end* makroları, bu iç yapıya uygun şekilde *va_list*'i manipüle eder.
 
-C programlama dilinde makrolar, #define ön işlemci direktifi ile tanımlanır. Ön işlemci, kodu derleme öncesinde belirli değişikliklere tabi tutan bir programın parçasıdır. Bir makro, belirli bir sembolün bir ifade ile değiştirilmesini sağlar.
+Bu nedenle, *va_list* türünün iç yapısına dair kesin bir bilgiye sahip olmamak önemlidir. Programcı, sadece va_list türünü kullanarak argümanlara erişir ve manipüle eder. Bu işlemleri gerçekleştirmek için *va_start*, *va_arg*, ve *va_end* gibi makrolar kullanılır.
 
-- örnek
+ örnek
  ```bash
 int sum_variadic(int count, ...)
 {
@@ -36,7 +50,41 @@ int sum_variadic(int count, ...)
  ```bash
 int result = sum_variadic(3, 1, 2, 3);
 printf("The sum is: %d", result);
+çıktı: The sum is: 6
  ```
+# Makro ve Fonksiyonalar arasındaki fark
+
+Makro ve fonksiyonlar, C programlama dilinde kodunuzu yapılandırmak ve tekrar kullanılabilirliği artırmak için kullanılan iki farklı kavramdır. İşte makro ve fonksiyonlar arasındaki bazı temel farklar:
+
+- Çalışma Zamanı:
+  - Makro: Makrolar, derleme zamanında işlenir. Yani, kod derlendiğinde, makro çağrıları, makro gövdelerine doğrudan yerine geçirilir.
+  - Fonksiyon: Fonksiyonlar, çalışma zamanında işlenir. Yani, kod çalıştırıldığında, fonksiyonlar çağrılarak çalışır.
+
+- Yerine Geçme:
+  - Makro: Makro çağrıları, genellikle dosyada veya kaynak kodda göründükleri şekilde yerine geçer. Bu, makro kullanımının doğrudan yerine geçme (substitution) olduğu anlamına gelir.
+  - Fonksiyon: Fonksiyonlar, çağrıldıkları noktada çalıştırılır ve geri dönüş değeri üzerinden etkileşim sağlanır.
+
+- Tanımlama ve Kapsam:
+  - Makro: Makrolar #define ifadesiyle tanımlanır ve genellikle programın her yerinde geçerlidir. Tanımlar genellikle tek satırda olur.
+  - Fonksiyon: Fonksiyonlar, genellikle ayrı bir blokta tanımlanır ve bu blok kodun başka yerlerinden çağrılır. Fonksiyonlar kendi kapsam alanlarına sahiptirler.
+
+- Tip Güvenliği:
+  - Makro: Makrolar genellikle tip güvenli değildir. Makro gövdelerinde doğrudan değer yerine geçirildiği için tip uyumsuzluklarına yol açabilir.
+  - Fonksiyon: Fonksiyonlar genellikle tip güvenlidir. Fonksiyonların parametreleri ve dönüş değerleri için belirli bir tür belirtilir, bu nedenle tip uyumsuzluğu daha az olasılıklıdır.
+
+- Debugging (Hata Ayıklama):
+  - Makro: Hata ayıklama süreci, makro kullanımında zor olabilir çünkü derleme zamanında işlenir ve genellikle doğrudan kodda göründükleri gibi değil, yerine geçmiş halleriyle hata mesajları alınır.
+  - Fonksiyon: Fonksiyonlar, hata ayıklama sürecini kolaylaştırabilir çünkü kod parçacıkları izlenebilir, adlandırılabilir ve işlevsellik açısından açıkça anlaşılabilir.
+
+```
+typedef struct {
+    // ... va_list'in iç yapısı, platforma bağlı olarak değişebilir ...
+} va_list;
+
+#define va_start(ap, last_arg) // ... va_list'i başlatan makro ...
+#define va_arg(ap, type)       // ... va_list'ten argüman okuyan makro ...
+#define va_end(ap)             // ... va_list'i temizleyen makro ...
+```
 
 #  putnbr()
  ```bash
@@ -140,3 +188,28 @@ EXAMPLES
                    va_end(ap);
                    return (p);
            }
+
+
+# Boolean Değişken Tanımlama
+C dilinde boolean veri tipi doğrudan desteklenmez; ancak, bu tür bir mantıksal durumu temsil etmek için  `stdbool.h ` başlık dosyasında tanımlanan bool türünü kullanabiliriz. 
+
+```
+#include <stdbool.h>
+int main(){
+	bool myBooleanVariable;
+	myBooleanVariable = true;
+```
+Bu şekilde, stdbool.h başlık dosyasını dahil ederek ve bool türünü kullanarak C dilinde boolean bir değişken tanımlayabilir ve kullanabiliriz.
+#
+#
+#
+
+%c tek bir karakter yazdırır.
+%s bir karakter dizisi yazdırır.
+%p Void * pointer argümanını hexadecimal biçiminde yazdırır.
+%d 10 tabanında decimal sayı yazdırır.
+%i 10 tabanında tam sayı yazdırır.
+%u 10 tabanında işaretsiz decimal sayı yazdırır.
+%x hexadecimal sayıyı (16 tabanında) küçük harfler ile yazdırır.
+%X hexadecimal sayıyı (16 tabanında) büyük harfler ile yazdırır.
+%% yüzde işareti yazdırır.
