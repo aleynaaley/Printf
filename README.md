@@ -206,11 +206,11 @@ C dilinde printf() fonksiyonu, çıktıyı standart çıkış akımına (genelli
 	- Tampon (Buffer) Boyutu: printf() fonksiyonunun bir tampon boyutu vardır. Bu, geçici olarak depolanan verilerin miktarını belirler. Tampon boyutu C dilinde derleyiciden derleyiciye değişebilir. Standart C kütüphanesine göre, printf() fonksiyonu genellikle 1024 bayt büyüklüğünde bir tampon kullanır. Ancak, bu değer değişebilir.
  Çıktı Formatlaması: printf() fonksiyonu, belirtilen formatlama dizesine göre çıktıyı oluşturur. Verilen argümanlar, bu formatlama dizesine göre işlenir ve geçici bir tampona yerleştirilir.
  
-	-Tampona Yazma: Çıktı verileri, formatlama işleminden sonra oluşturulan geçici tampona yazılır.
+-Tampona Yazma: Çıktı verileri, formatlama işleminden sonra oluşturulan geçici tampona yazılır.
  
-	-Tamponun Boşaltılması: Tampon, belirli bir boyuta ulaştığında veya printf() fonksiyonu çağrıldığında otomatik olarak boşaltılır. Bu, tamponun içindeki verilerin standart çıkışa (örneğin, ekran) yazılmasını sağlar.
+-Tamponun Boşaltılması: Tampon, belirli bir boyuta ulaştığında veya printf() fonksiyonu çağrıldığında otomatik olarak boşaltılır. Bu, tamponun içindeki verilerin standart çıkışa (örneğin, ekran) yazılmasını sağlar.
  
-	-Manuel Boşaltma: Bazı durumlarda, programcı fflush(stdout) fonksiyonunu kullanarak tamponu manuel olarak boşaltabilir. Bu, çıktının hemen standart çıkışa yazılmasını sağlar.
+-Manuel Boşaltma: Bazı durumlarda, programcı fflush(stdout) fonksiyonunu kullanarak tamponu manuel olarak boşaltabilir. Bu, çıktının hemen standart çıkışa yazılmasını sağlar.
 
 #
 #
