@@ -1,3 +1,5 @@
+# int printf(const char *format, ...);
+
 #  Variadic Fonksiyonlar
 
 Variadic fonksiyonlar (değişken fonksiyonlar) , değişken sayıda argüman alabilen işlevlerdir . C programlamada değişken bir işlev programa esneklik katar. Bir sabit argüman alır ve daha sonra herhangi bir sayıda argüman iletilebilir. Variadik fonksiyon en az bir sabit değişkenden ve ardından son parametre olarak bir üç noktadan (…) oluşur. bu tür fonksiyonları tanımlamak için `<stdarg.h>` başlık dosyasındaki `va_list`, `va_start`, `va_arg`, ve `va_end` gibi makroları kullanırız. 
@@ -87,6 +89,12 @@ typedef struct {
 ```
 
 #  putnbr()
+neden yetersiz ? 
+Örneğin, %d bir tamsayıyı temsil eder, %s bir karakter dizisini temsil eder. printf() fonksiyonu, biçim belirleyicileri kullanılarak farklı veri tiplerini ve biçimleri çıktıya yazdırabilir.
+
+ft_putnbr_fd(), spesifik olarak bir tamsayıyı dosyaya karakter dizisi olarak yazdırmak için tasarlanmıştır. Biçim belirleyicileri kullanılmaz ve sadece tamsayı değerini karakterlere dönüştürür.
+printf() fonksiyonu, çıktıyı standart çıkışa (stdout) veya başka bir dosya tanımlayıcısına yönlendirmek için kullanılabilir.
+
  ```bash
 
 #include "libft.h"
