@@ -1,4 +1,5 @@
 # int printf(const char *format, ...);
+printf fonksiyonu int değer döndürür. döndürdüğü değeri ekrana çıktı olarak vermez. döndürdüğü değer ekrana çıktı olarak verdiği karakterlerin toplam sayısıdır  yani bir int değeridir.
 
 #  Variadic Fonksiyonlar
 
@@ -220,15 +221,26 @@ C dilinde printf() fonksiyonu, çıktıyı standart çıkış akımına (genelli
  
 -Manuel Boşaltma: Bazı durumlarda, programcı fflush(stdout) fonksiyonunu kullanarak tamponu manuel olarak boşaltabilir. Bu, çıktının hemen standart çıkışa yazılmasını sağlar.
 
-#
-#
+# Printf fonksiyonu ile ft_printf arasındaki farklar
+- Biçimlendirme seçenekleri: Bu ft_printf fonksiyonu, sadece %c, %d, %i, %u, %x, %X, %p, %s ve %% biçimlendirme seçeneklerini destekler. Ancak, standart printf fonksiyonu, çok daha fazla biçimlendirme seçeneği sunar, örneğin %f (float), %e (bilimsel notasyon), %g (genel format), %o (oktal), %n (yazılan karakter sayısı), vb.
+- Alan genişliği ve hassasiyet: Standart printf fonksiyonu, alan genişliği ve hassasiyet belirticilerini destekler. Örneğin, %10.2f ifadesi, bir float değerini en az 10 karakter genişliğinde ve ondalık noktadan sonra 2 basamak hassasiyetle yazdırır. Ancak, bu ft_printf fonksiyonu, bu özellikleri desteklemez.
+- Bayraklar: Standart printf fonksiyonu, çeşitli bayrakları destekler, örneğin - (sol hizalama), + (işaret belirtme),   (boşluk), 0 (sıfır dolgu), # (alternatif biçim). Ancak, bu ft_printf fonksiyonu, bu bayrakları desteklemez.
+- Uzunluk belirticileri: Standart printf fonksiyonu, çeşitli uzunluk belirticilerini destekler, örneğin l (long), ll (long long), h (short), hh (char), L (long double). Ancak, bu ft_printf fonksiyonu, bu belirticileri desteklemez.
+- Buffer Yönetimi : Standart printf fonksiyonu, genellikle bir çıktı tamponu kullanır. Bu, printf’in çıktısını hemen yazdırmak yerine bir tampona yazdığı ve tampon dolana kadar veya belirli bir durumda (örneğin, bir yeni satır karakteri görüldüğünde veya fflush fonksiyonu çağrıldığında) tamponun içeriğini standart çıktıya boşalttığı anlamına gelir. Bu, performansı artırabilir çünkü sistem çağrılarının sayısını azaltır.
+Öte yandan, bu ft_printf fonksiyonu, her karakteri veya dizeyi hemen standart çıktıya yazdırır. Bu, write sistem çağrısını her seferinde çağırır, bu da daha fazla sistem çağrısı anlamına gelir ve bu da performansı düşürebilir.
+Bu nedenle, bu ft_printf fonksiyonu, tamponlama kullanmayan daha basit bir yaklaşımı benimserken, standart printf fonksiyonu genellikle tamponlama kullanır
+# Biçimlendirme seçenekleri ve Flagler 
 
-%c tek bir karakter yazdırır.
-%s bir karakter dizisi yazdırır.
-%p Void * pointer argümanını hexadecimal biçiminde yazdırır.
-%d 10 tabanında decimal sayı yazdırır.
-%i 10 tabanında tam sayı yazdırır.
-%u 10 tabanında işaretsiz decimal sayı yazdırır.
-%x hexadecimal sayıyı (16 tabanında) küçük harfler ile yazdırır.
-%X hexadecimal sayıyı (16 tabanında) büyük harfler ile yazdırır.
-%% yüzde işareti yazdırır.
+Biçimlendirme seçenekleri, printf gibi bir fonksiyonda kullanılan ve çıktının nasıl görüneceğini belirleyen özel karakterler veya karakter dizileridir. Örneğin, %d bir tamsayıyı, %f bir kayan noktalı sayıyı, %s bir dizeyi ve %c bir karakteri temsil eder.
+
+Flag ise, printf gibi bir fonksiyonda kullanılan ve çıktının biçimlendirilmesini daha da özelleştiren özel karakterlerdir. Örneğin, - flag’ı sol hizalamayı, + flag’ı pozitif sayıların önünde artı işareti olmasını, 0 flag’ı sayının başındaki boşlukların sıfır ile doldurulmasını sağlar. Bu flag’lar, genellikle yüzde işareti (%) ve biçimlendirme karakteri arasında yer alır. Örneğin, printf ifadesinde %+d, pozitif bir tamsayının önünde artı işareti olmasını sağlar.
+# 
+	%c tek bir karakter yazdırır.
+	%s bir karakter dizisi yazdırır.
+	%p Void * pointer argümanını hexadecimal biçiminde yazdırır.
+	%d 10 tabanında decimal sayı yazdırır.
+	%i 10 tabanında tam sayı yazdırır.
+	%u 10 tabanında işaretsiz decimal sayı yazdırır.
+	%x hexadecimal sayıyı (16 tabanında) küçük harfler ile yazdırır.
+	%X hexadecimal sayıyı (16 tabanında) büyük harfler ile yazdırır.
+	%% yüzde işareti yazdırır.
