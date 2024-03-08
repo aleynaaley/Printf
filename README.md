@@ -246,3 +246,9 @@ Flag ise, printf gibi bir fonksiyonda kullanılan ve çıktının biçimlendiril
 	%x hexadecimal sayıyı (16 tabanında) küçük harfler ile yazdırır.
 	%X hexadecimal sayıyı (16 tabanında) büyük harfler ile yazdırır.
 	%% yüzde işareti yazdırır.
+
+
+# Write fonksiyonu
+write fonksiyonu, başarılı olduğunda yazılan bayt sayısını döndürür. Ancak, bir hata durumunda, -1 değerini döndürür ve errno hatayı belirtmek üzere ayarlanır.
+write fonksiyonunun istenen tüm baytları yazmayabilir. Bu tür kısmi yazmalar çeşitli nedenlerle olabilir; örneğin, disk cihazında istenen tüm baytları yazmak için yeterli alan olmaması veya bir sinyal işleyicisi tarafından bir write çağrısı, istenen tüm baytları aktarmadan önce bazı baytları aktardıktan sonra kesilmesi durumunda1. Kısmi bir yazma durumunda, çağıran başka bir write çağrısı yaparak kalan baytları aktarabilir
+
