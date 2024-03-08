@@ -229,11 +229,13 @@ C dilinde printf() fonksiyonu, çıktıyı standart çıkış akımına (genelli
 - Buffer Yönetimi : Standart printf fonksiyonu, genellikle bir çıktı tamponu kullanır. Bu, printf’in çıktısını hemen yazdırmak yerine bir tampona yazdığı ve tampon dolana kadar veya belirli bir durumda (örneğin, bir yeni satır karakteri görüldüğünde veya fflush fonksiyonu çağrıldığında) tamponun içeriğini standart çıktıya boşalttığı anlamına gelir. Bu, performansı artırabilir çünkü sistem çağrılarının sayısını azaltır.
 Öte yandan, bu ft_printf fonksiyonu, her karakteri veya dizeyi hemen standart çıktıya yazdırır. Bu, write sistem çağrısını her seferinde çağırır, bu da daha fazla sistem çağrısı anlamına gelir ve bu da performansı düşürebilir.
 Bu nedenle, bu ft_printf fonksiyonu, tamponlama kullanmayan daha basit bir yaklaşımı benimserken, standart printf fonksiyonu genellikle tamponlama kullanır
-# Biçimlendirme seçenekleri ve Flagler 
+# Specifier seçenekleri ve Flagler 
 
 Biçimlendirme seçenekleri, printf gibi bir fonksiyonda kullanılan ve çıktının nasıl görüneceğini belirleyen özel karakterler veya karakter dizileridir. Örneğin, %d bir tamsayıyı, %f bir kayan noktalı sayıyı, %s bir dizeyi ve %c bir karakteri temsil eder.
 
 Flag ise, printf gibi bir fonksiyonda kullanılan ve çıktının biçimlendirilmesini daha da özelleştiren özel karakterlerdir. Örneğin, - flag’ı sol hizalamayı, + flag’ı pozitif sayıların önünde artı işareti olmasını, 0 flag’ı sayının başındaki boşlukların sıfır ile doldurulmasını sağlar. Bu flag’lar, genellikle yüzde işareti (%) ve biçimlendirme karakteri arasında yer alır. Örneğin, printf ifadesinde %+d, pozitif bir tamsayının önünde artı işareti olmasını sağlar.
+
+%[flags][width][.precision][length]specifier
 # 
 	%c tek bir karakter yazdırır.
 	%s bir karakter dizisi yazdırır.
