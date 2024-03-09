@@ -17,8 +17,8 @@ int	ft_int(int a)
 	char	*res;
 	int		chr;
 
-	res = ft_itoa(a); //123
-	chr = ft_strlen(res); 3
+	res = ft_itoa(a); //bu fonksiyonu libft eklemeden kullan 
+	chr = ft_strlen(res);
 	ft_putstr_fd(res, 1);
 	free(res);
 	return (chr);
