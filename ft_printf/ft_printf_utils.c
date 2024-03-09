@@ -49,7 +49,7 @@ int	ft_address(unsigned long a, int sign)
 		sign = 0;
 	}
 	if (a >= 16)
-		ret += ft_point(a / 16, 0);
+		ret += ft_address(a / 16, 0);
 	write(1, &"0123456789abcdef"[a % 16], 1);
 	return (ret + 1);
 }
