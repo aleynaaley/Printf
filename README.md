@@ -212,7 +212,7 @@ Bu şekilde, stdbool.h başlık dosyasını dahil ederek ve bool türünü kulla
 
 # Printf fonksiyonunda Buffer yönetimi
 C dilinde printf() fonksiyonu, çıktıyı standart çıkış akımına (genellikle ekran) yazdırmak için kullanılır. Bu fonksiyonun içinde, çıktı verileri bir tampon (buffer) üzerinde geçici olarak depolanır(genellikle ram ) ve daha sonra bu tampon standart çıkışa aktarılır.
-	- Tampon (Buffer) Boyutu: printf() fonksiyonunun bir tampon boyutu vardır. Bu, geçici olarak depolanan verilerin miktarını belirler. Tampon boyutu C dilinde derleyiciden derleyiciye değişebilir. Standart C kütüphanesine göre, printf() fonksiyonu genellikle 1024 bayt büyüklüğünde bir tampon kullanır. Ancak, bu değer değişebilir.
+- Tampon (Buffer) Boyutu: printf() fonksiyonunun bir tampon boyutu vardır. Bu, geçici olarak depolanan verilerin miktarını belirler. Tampon boyutu C dilinde derleyiciden derleyiciye değişebilir. Standart C kütüphanesine göre, printf() fonksiyonu genellikle 1024 bayt büyüklüğünde bir tampon kullanır. Ancak, bu değer değişebilir.
  Çıktı Formatlaması: printf() fonksiyonu, belirtilen formatlama dizesine göre çıktıyı oluşturur. Verilen argümanlar, bu formatlama dizesine göre işlenir ve geçici bir tampona yerleştirilir.
  
 -Tampona Yazma: Çıktı verileri, formatlama işleminden sonra oluşturulan geçici tampona yazılır.
