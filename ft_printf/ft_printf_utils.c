@@ -56,8 +56,15 @@ int	ft_address(unsigned long a, int sign)
 
 int	ft_string(char *str)
 {
+	int i;
+	i = 0;
 	if (!str)
 		return (write(1, "(null)", 6));
 	else
-		return(write(1, str, ft_strlen(str)));
+		while(str[i])
+		{
+			write(1, &str[i], 1) ;
+			i++;
+		}
+		return(0);
 }
