@@ -32,7 +32,7 @@ int	ft_specifier(va_list arg, char c)
 	else if (c == 's')
 		return (ft_string(va_arg((arg), char *)));
 	else
-		return (ft_string("%"));
+		return (ft_string("%%"));
 }
 
 bool	ft_specifier_cont(const char *str, int i)
