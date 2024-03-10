@@ -262,10 +262,27 @@ libtool’un temel işlevleri şunlardır:
 - Yürütülebilir Dosyaları Bağlama (Linking): libtool, yürütülebilir dosyaları bağlamak için de kullanılabilir. Bu, yürütülebilir dosyanın hangi kütüphanelere bağlı olduğunu belirler.
 - Kütüphaneleri Yükleme: libtool, kütüphanelerin doğru yere yüklenmesini sağlar.
 - Yürütülebilir Dosyaları Yükleme: libtool, yürütülebilir dosyaların doğru yere yüklenmesini sağlar.
-- 
-
+  
 # ek 
 c de nesne bellekte bir alanı ifade eder. Bir değişken veya bir yapı nesnedir. va_list türünde bir nesne ise bu değişken sayıda argüman alan bir yapının bellekteki tutulduğu yeri işaret eder. 
 va_start fonksiyonu bu bellke bölgesine erişin sağlar ve değişken argümanlarını işlemeye hazır hale gelmesini sağlar. 
 
+
+-Stack ve heap
+
+STACK
+
+LIFO (Last In, First Out) mantığına dayanır. Yani en son eklenen veri, ilk çıkar.
+Bellekte sabit boyutlu değişkenlerin (örneğin sayılar, karakterler) saklandığı alandır.
+İşlevi bittiğinde otomatik olarak bellekten silinir.
+Örneğin, bir fonksiyon içinde tanımlanan değişkenler stack’te saklanır.
+Swift veya Objective-C gibi dillerde Automatic Reference Counting (ARC) sayesinde bu işlem otomatik olarak gerçekleşir.
+
+HEAP
+
+Genel amaçlı bellek alanıdır.
+Değişebilir boyutlu verilerin (örneğin diziler, nesneler) saklandığı alandır.
+Bellek yönetimi kullanıcı tarafından yapılır. Bellekten silme işlemi manuel olarak yapılmalıdır.
+Örneğin, dinamik olarak bellek ayırmak istediğinizde heap kullanılır.
+Swift veya Objective-C gibi dillerde ARC bu işlemi otomatik olarak gerçekleştirir.
 
