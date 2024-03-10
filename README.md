@@ -252,3 +252,14 @@ Flag ise, printf gibi bir fonksiyonda kullanılan ve çıktının biçimlendiril
 write fonksiyonu, başarılı olduğunda yazılan bayt sayısını döndürür. Ancak, bir hata durumunda, -1 değerini döndürür ve errno hatayı belirtmek üzere ayarlanır.
 write fonksiyonunun istenen tüm baytları yazmayabilir. Bu tür kısmi yazmalar çeşitli nedenlerle olabilir; örneğin, disk cihazında istenen tüm baytları yazmak için yeterli alan olmaması veya bir sinyal işleyicisi tarafından bir write çağrısı, istenen tüm baytları aktarmadan önce bazı baytları aktardıktan sonra kesilmesi durumunda1. Kısmi bir yazma durumunda, çağıran başka bir write çağrısı yaparak kalan baytları aktarabilir
 
+# Litbool komutu
+libtool C dilinde kütüphane oluştururken kullanılan bir araçtırlibtool, paylaşılan kütüphanelerin karmaşıklığını gizleyen ve tutarlı, taşınabilir bir arayüz sağlayan genel bir kütüphane destek betiği olarak tanımlanabilir12.
+
+libtool’un temel işlevleri şunlardır:
+
+- Nesne Dosyaları Oluşturma: libtool’u kullanarak, platforma özgü derleyici bayraklarına ihtiyaç duymadan nesne dosyaları oluşturabilirsiniz.
+- Kütüphaneleri Bağlama (Linking): libtool, hem statik hem de dinamik kütüphaneleri bağlamak için kullanılabilir. Bu, platforma özgü derleyici ve bağlayıcı bayraklarını gizler.
+- Yürütülebilir Dosyaları Bağlama (Linking): libtool, yürütülebilir dosyaları bağlamak için de kullanılabilir. Bu, yürütülebilir dosyanın hangi kütüphanelere bağlı olduğunu belirler.
+- Kütüphaneleri Yükleme: libtool, kütüphanelerin doğru yere yüklenmesini sağlar.
+- Yürütülebilir Dosyaları Yükleme: libtool, yürütülebilir dosyaların doğru yere yüklenmesini sağlar.
+
