@@ -1,5 +1,5 @@
 # int printf(const char *format, ...);
-printf fonksiyonu int değer döndürür. döndürdüğü değeri ekrana çıktı olarak vermez. döndürdüğü değer ekrana çıktı olarak verdiği karakterlerin toplam sayısıdır  yani bir int değeridir.
+printf fonksiyonu int değer döndürür. döndürdüğü değeri ekrana çıktı olarak vermez. döndürdüğü değer ekrana çıktı olarak verdiği karakterlerin toplam sayısıdır .
 
 #  Variadic Fonksiyonlar
 
@@ -143,7 +143,7 @@ write fonksiyonu, başarılı olduğunda yazılan bayt sayısını döndürür. 
 write fonksiyonunun istenen tüm baytları yazmayabilir. Bu tür kısmi yazmalar çeşitli nedenlerle olabilir; örneğin, disk cihazında istenen tüm baytları yazmak için yeterli alan olmaması veya bir sinyal işleyicisi tarafından bir write çağrısı, istenen tüm baytları aktarmadan önce bazı baytları aktardıktan sonra kesilmesi durumunda1. Kısmi bir yazma durumunda, çağıran başka bir write çağrısı yaparak kalan baytları aktarabilir
 
 # Litbool komutu
-libtool C dilinde kütüphane oluştururken kullanılan bir araçtırlibtool, paylaşılan kütüphanelerin karmaşıklığını gizleyen ve tutarlı, taşınabilir bir arayüz sağlayan genel bir kütüphane destek betiği olarak tanımlanabilir12.
+libtool C dilinde kütüphane oluştururken kullanılan bir araçtır.libtool, paylaşılan kütüphanelerin karmaşıklığını gizleyen ve tutarlı, taşınabilir bir arayüz sağlayan genel bir kütüphane destek betiği olarak tanımlanabilir.
 
 libtool’un temel işlevleri şunlardır:
 
